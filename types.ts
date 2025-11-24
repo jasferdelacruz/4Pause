@@ -34,10 +34,22 @@ export enum UserRole {
   ADMIN = 'ADMIN'
 }
 
+export type BookingStatus = 'Confirmed' | 'Pending' | 'Cancelled';
+
 export interface BookingRequest {
   packageId: string;
+  packageName: string;
   date: string;
   guests: number;
   name: string;
   email: string;
+  phone: string;
+  specialRequests?: string;
+  totalPrice: number;
+}
+
+export interface Booking extends BookingRequest {
+  id: string;
+  status: BookingStatus;
+  timestamp: Date;
 }
